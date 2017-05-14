@@ -21,7 +21,7 @@ public class Test {
         File file = new File("caro.rar");
         FileInputStream fis = new FileInputStream(file);
         Checksum cs = new Checksum();
-        String s = cs.MD5(fis);
+        String s = cs.MD5(file);
         System.err.println(s);
     }
 }

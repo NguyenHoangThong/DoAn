@@ -47,7 +47,7 @@ public class receivePanel extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
+        tfDialog = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -99,7 +99,7 @@ public class receivePanel extends javax.swing.JPanel {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextField4.setEditable(false);
+        tfDialog.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,7 +135,7 @@ public class receivePanel extends javax.swing.JPanel {
                                         .addComponent(jTextField2)
                                         .addComponent(jComboBox1, 0, 241, Short.MAX_VALUE))
                                     .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(jTextField4)))))
+                                .addComponent(tfDialog)))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -159,7 +159,7 @@ public class receivePanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOKRec)
@@ -191,7 +191,9 @@ public class receivePanel extends javax.swing.JPanel {
 
     private void btnOKRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKRecActionPerformed
         // TODO add your handling code here:
-        udp.receiveUDP(file);
+        String s = udp.receiveUDP(file);
+        tfDialog.setText(s.toString());
+        System.out.println(s.toString());
     }//GEN-LAST:event_btnOKRecActionPerformed
 
 
@@ -211,7 +213,7 @@ public class receivePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField tfDialog;
     private javax.swing.JTextField tfPath;
     // End of variables declaration//GEN-END:variables
 }

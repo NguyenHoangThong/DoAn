@@ -5,6 +5,7 @@
  */
 package MD5;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -16,8 +17,9 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Checksum {
     
-    public String MD5(FileInputStream fis) throws NoSuchAlgorithmException, IOException
+    public String MD5(File file) throws NoSuchAlgorithmException, IOException
     {
+        FileInputStream fis = new FileInputStream(file);
         MessageDigest md = MessageDigest.getInstance("MD5");
         //FileInputStream fis = new FileInputStream("c:\\loging.log");
 
