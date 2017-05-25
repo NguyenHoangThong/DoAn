@@ -111,13 +111,13 @@ public class mainFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(mainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        new mainFrame().setVisible(true);
         /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new mainFrame().setVisible(true);
-//            }
-//        });
+       java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new mainFrame().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

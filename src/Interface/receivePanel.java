@@ -5,8 +5,14 @@
  */
 package Interface;
 
+import Encrypt.CryptoUtils;
+import MD5.Checksum;
 import UDP.UDP;
 import java.io.File;
+import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 /**
@@ -18,8 +24,13 @@ public class receivePanel extends javax.swing.JPanel {
     /**
      * Creates new form receivePanel
      */
+    static UDP udp = new UDP();
+    File file;
+    String s1;
+    Checksum checksum = new Checksum();
     public receivePanel() {
         initComponents();
+       // Thread thread = new Thread(new receivePanel());
     }
 
     /**
@@ -39,8 +50,8 @@ public class receivePanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tfPath = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        tfSend = new javax.swing.JTextField();
+        tfRec = new javax.swing.JTextField();
         btnBrowserRec = new javax.swing.JButton();
         btnOKRec = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -125,14 +136,14 @@ public class receivePanel extends javax.swing.JPanel {
                                     .addComponent(btnOKRec, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField3)
+                                .addComponent(tfRec)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jButton3)
                                             .addGap(46, 46, 46)
                                             .addComponent(jButton4))
-                                        .addComponent(jTextField2)
+                                        .addComponent(tfSend)
                                         .addComponent(jComboBox1, 0, 241, Short.MAX_VALUE))
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addComponent(tfDialog)))))
@@ -153,11 +164,11 @@ public class receivePanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfRec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tfDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
@@ -168,8 +179,7 @@ public class receivePanel extends javax.swing.JPanel {
                 .addGap(55, 55, 55))
         );
     }// </editor-fold>//GEN-END:initComponents
-    static UDP udp = new UDP();
-    File file;
+    
     private void btnBrowserRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowserRecActionPerformed
         // TODO add your handling code here:
         int select = jFileChooser1.showSaveDialog(this);
@@ -190,10 +200,43 @@ public class receivePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBrowserRecActionPerformed
 
     private void btnOKRecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKRecActionPerformed
-        // TODO add your handling code here:
-        String s = udp.receiveUDP(file);
-        tfDialog.setText(s.toString());
-        System.out.println(s.toString());
+        try
+        {
+            // TODO add your handling code here:
+            System.out.println("save yet");
+            //     System.out.println(s.toString());
+            File encrypt = new File("Encrypt1.encrypt");
+            s1= udp.receiveUDP(encrypt);
+            System.err.println(s1);
+            String key ="nguyenhoangthong";
+            try
+            {
+                CryptoUtils.decrypt(key, encrypt,file);
+                
+            }
+            catch(Exception e)
+            {
+                System.err.println(e.getMessage().toString());
+            }
+            String cs = checksum.MD5(file);
+            tfSend.setText(s1);
+            tfRec.setText(cs);
+            if(s1.equals(cs))
+            {
+                tfDialog.setText("File transfer complete");
+            }
+            else tfDialog.setText("File error");
+            
+            
+        }
+        catch(NoSuchAlgorithmException ex)
+        {
+            Logger.getLogger(receivePanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(receivePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+              
+        
     }//GEN-LAST:event_btnOKRecActionPerformed
 
 
@@ -211,9 +254,18 @@ public class receivePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField tfDialog;
     private javax.swing.JTextField tfPath;
+    private javax.swing.JTextField tfRec;
+    private javax.swing.JTextField tfSend;
     // End of variables declaration//GEN-END:variables
+
+    
+
+   // @Override
+//    public void run() {
+//        s = udp.receiveUDP(file);
+//        tfDialog.setText(s.toString());
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 }

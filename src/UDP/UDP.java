@@ -96,8 +96,8 @@ public class UDP {
     }
     public static String receiveUDP(File file)
     {
-        String out = "1";
-        System.out.print("1");
+        String out = "";
+        
         try
         {
             DatagramSocket receiveSK = new DatagramSocket(PORT);
@@ -143,40 +143,7 @@ public class UDP {
                 receiveSK.close();
                 System.err.println("da loi xay ra");
                 
-            }
-            
-//            byte b3[] = new byte[1024];
-//            DatagramSocket ds = new DatagramSocket(2020);
-//            DatagramPacket dp1 = new DatagramPacket(b3, 1024);
-//            ds.receive(dp1);
-//            input = dp1.getData().toString();
-//            System.out.println(input);
-//            //ds1.close();
-//            System.out.print("2");
-//           // DatagramSocket ds = new DatagramSocket(2020);
-//            
-//           // ds.setSoTimeout(10000);
-//            byte b1[] = new byte[1024*1024*100];
-//            System.out.print("3");
-//	    DatagramPacket send = new DatagramPacket(b1, 1024*1024*100);
-//            System.out.print("4");
-//            ds.receive(send);
-//            System.out.print("5");
-//          
-//                        
-//            System.out.println("Da nhan"+send.getAddress()+" "+send.getPort());
-//	// Luu ket qua
-//            System.out.print("6");
-//            
-//	    
-//	    byte b2[] = send.getData();
-//            f.write(b2,0,send.getLength());
-//            f.close();
-//            System.out.println("Da luu file thanh cong");
-//		
-//			// Dong UDP Socket
-//            ds.close();
-            
+            }            
         }
         catch(Exception e)
         {
