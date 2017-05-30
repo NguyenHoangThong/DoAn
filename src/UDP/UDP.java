@@ -114,7 +114,7 @@ public class UDP {
                 //nhan tu client
                 receiveDP = new DatagramPacket(receive, receive.length);
                 receiveSK.receive(receiveDP);
-                out += new String(receiveDP.getData());
+                out = new String(receiveDP.getData());
                 int port = receiveDP.getPort();
                 InetAddress address = receiveDP.getAddress();
                 System.out.println(out);

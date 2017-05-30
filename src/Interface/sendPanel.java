@@ -5,9 +5,14 @@
  */
 package Interface;
 
+import MD5.Checksum;
 import UDP.UDP;
 import java.io.File;
+import java.io.IOException;
 import java.net.InetAddress;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.control.DialogPane;
 import javax.swing.JFileChooser;
 
@@ -47,7 +52,7 @@ public class sendPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         tfHost = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        tfmd5 = new javax.swing.JTextField();
         tfBrowserSend = new javax.swing.JTextField();
         btnSendSend = new javax.swing.JButton();
         btnResetSend = new javax.swing.JButton();
@@ -112,9 +117,10 @@ public class sendPanel extends javax.swing.JPanel {
             }
         });
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        tfmd5.setEditable(false);
+        tfmd5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                tfmd5ActionPerformed(evt);
             }
         });
 
@@ -151,7 +157,7 @@ public class sendPanel extends javax.swing.JPanel {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField5)
+                            .addComponent(tfmd5)
                             .addComponent(jTextField3)
                             .addComponent(tfHost)
                             .addGroup(layout.createSequentialGroup()
@@ -180,7 +186,7 @@ public class sendPanel extends javax.swing.JPanel {
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfmd5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -201,9 +207,9 @@ public class sendPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void tfmd5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfmd5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_tfmd5ActionPerformed
 
     private void btnBrowserSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowserSendActionPerformed
         // TODO add your handling code here:
@@ -212,6 +218,13 @@ public class sendPanel extends javax.swing.JPanel {
             path = jFileChooser1.getSelectedFile().getAbsolutePath().replace('\\', '/');
             tfBrowserSend.setText(path);
             f = jFileChooser1.getSelectedFile();
+            try {
+                tfmd5.setText(new Checksum().MD5(f).toString());
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(sendPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(sendPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
             System.out.println(path);
             
         }
@@ -252,9 +265,9 @@ public class sendPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JButton ntnCancelSend;
     private javax.swing.JTextField tfBrowserSend;
     private javax.swing.JTextField tfHost;
+    private javax.swing.JTextField tfmd5;
     // End of variables declaration//GEN-END:variables
 }

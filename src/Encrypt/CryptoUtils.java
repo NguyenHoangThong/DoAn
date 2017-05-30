@@ -24,12 +24,12 @@ import javax.crypto.spec.SecretKeySpec;
 public class CryptoUtils {
     private static final String ALGORITHM = "AES";
     private static final String TRANSFORMATION = "AES";
- 
+    //Ma hoa file
     public static void encrypt(String key, File inputFile, File outputFile)
             throws CryptoException {
         doCrypto(Cipher.ENCRYPT_MODE, key, inputFile, outputFile);
     }
- 
+    //Giai ma file
     public static void decrypt(String key, File inputFile, File outputFile)
             throws CryptoException {
         doCrypto(Cipher.DECRYPT_MODE, key, inputFile, outputFile);
