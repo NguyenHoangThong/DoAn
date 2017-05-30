@@ -23,13 +23,15 @@ import java.net.SocketTimeoutException;
 public class UDP {
     static int PORT = 2020;
     static String KEY = "nguyenhoangthong";
+    static Checksum cs = new Checksum();
     public static void sendUDP(File f,String host)
     {
         
         try
         {
             //tao md5 hash
-            String checksum = new Checksum().MD5(f);
+            String checksum =  cs.MD5(f);
+            cs.ghiFile(host+".txt", checksum+"\r\n");
             //------------------------------------------//
             //ma hoa file
             File encryptedFile = new File("document.encrypted");

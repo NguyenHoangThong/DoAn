@@ -105,10 +105,7 @@
                           <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
                           <Component id="tfHost" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="btnResetSend" min="-2" max="-2" attributes="0"/>
-                                  <Component id="tfBrowserSend" min="-2" pref="147" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="tfBrowserSend" min="-2" pref="147" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnBrowserSend" min="-2" pref="90" max="-2" attributes="0"/>
                           </Group>
@@ -152,7 +149,6 @@
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnSendSend" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnResetSend" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ntnCancelSend" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="64" max="32767" attributes="0"/>
@@ -210,15 +206,13 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendSendActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnResetSend">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Reset"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="ntnCancelSend">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancel"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ntnCancelSendActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnBrowserSend">
       <Properties>

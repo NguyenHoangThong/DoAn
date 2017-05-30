@@ -47,16 +47,12 @@ public class receivePanel extends javax.swing.JPanel {
         jFileChooser1 = new javax.swing.JFileChooser();
         jFileChooser2 = new javax.swing.JFileChooser();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tfPath = new javax.swing.JTextField();
-        tfSend = new javax.swing.JTextField();
         tfRec = new javax.swing.JTextField();
         btnBrowserRec = new javax.swing.JButton();
         btnOKRec = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        tfDialog = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -82,8 +78,6 @@ public class receivePanel extends javax.swing.JPanel {
 
         jLabel1.setText("File path");
 
-        jLabel2.setText("MD5 file send");
-
         jLabel3.setText("MD5 file received");
 
         btnBrowserRec.setText("Browser");
@@ -100,47 +94,38 @@ public class receivePanel extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("Reset");
-
         jButton4.setText("Cancel");
-
-        tfDialog.setEditable(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(tfRec, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(tfPath, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBrowserRec))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(btnOKRec, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton3)
-                                        .addGap(46, 46, 46)
-                                        .addComponent(jButton4)
-                                        .addGap(0, 69, Short.MAX_VALUE))
-                                    .addComponent(tfDialog))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(tfSend, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(1, 1, 1))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                                .addComponent(tfRec, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(btnOKRec, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(53, 53, 53)))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -151,22 +136,15 @@ public class receivePanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(tfPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBrowserRec))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(tfSend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(tfRec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(tfDialog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOKRec)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addGap(55, 55, 55))
+                    .addComponent(jButton4)
+                    .addComponent(btnOKRec))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -197,7 +175,7 @@ public class receivePanel extends javax.swing.JPanel {
             //     System.out.println(s.toString());
             File encrypt = new File("Encrypt1.encrypt");
             s1= new String(udp.receiveUDP(encrypt).toString());
-            System.err.println("receive"+s1);
+            
             String key ="nguyenhoangthong";
             try
             {
@@ -210,45 +188,49 @@ public class receivePanel extends javax.swing.JPanel {
                 
             }
             String cs = new String(checksum.MD5(file).toString());
-            System.out.println("client"+cs);
-            tfSend.setText(s1);
+            System.err.println("receive "+s1);
+            System.out.println("client "+cs);
+            //tfSend.setText(s1);
             tfRec.setText(cs);
-            if( (cs.equalsIgnoreCase(s1)))
-            {
-                tfDialog.setText("truyen file thanh cong");
-            }
+            checksum.ghiFile(file.getName()+".txt", cs+"\r\n");
+//            if( (cs.equalsIgnoreCase(s1)))
+//            {
+//                tfDialog.setText("truyen file thanh cong");
+//            }
             
             
         }
         catch(NoSuchAlgorithmException ex)
         {
             Logger.getLogger(receivePanel.class.getName()).log(Level.SEVERE, null, ex);
-            tfDialog.setText("nhan file khong thanh cong");
+           // tfDialog.setText("nhan file khong thanh cong");
         } catch (IOException ex) {
             Logger.getLogger(receivePanel.class.getName()).log(Level.SEVERE, null, ex);
-            tfDialog.setText("nhan file khong thanh cong");
+           // tfDialog.setText("nhan file khong thanh cong");
         }
               
         
     }//GEN-LAST:event_btnOKRecActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowserRec;
     private javax.swing.JButton btnOKRec;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JFileChooser jFileChooser2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField tfDialog;
     private javax.swing.JTextField tfPath;
     private javax.swing.JTextField tfRec;
-    private javax.swing.JTextField tfSend;
     // End of variables declaration//GEN-END:variables
 
     

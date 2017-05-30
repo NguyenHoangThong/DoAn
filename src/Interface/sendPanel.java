@@ -55,7 +55,6 @@ public class sendPanel extends javax.swing.JPanel {
         tfmd5 = new javax.swing.JTextField();
         tfBrowserSend = new javax.swing.JTextField();
         btnSendSend = new javax.swing.JButton();
-        btnResetSend = new javax.swing.JButton();
         ntnCancelSend = new javax.swing.JButton();
         btnBrowserSend = new javax.swing.JButton();
 
@@ -131,9 +130,12 @@ public class sendPanel extends javax.swing.JPanel {
             }
         });
 
-        btnResetSend.setText("Reset");
-
         ntnCancelSend.setText("Cancel");
+        ntnCancelSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ntnCancelSendActionPerformed(evt);
+            }
+        });
 
         btnBrowserSend.setText("Browser");
         btnBrowserSend.addActionListener(new java.awt.event.ActionListener() {
@@ -161,9 +163,7 @@ public class sendPanel extends javax.swing.JPanel {
                             .addComponent(jTextField3)
                             .addComponent(tfHost)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnResetSend)
-                                    .addComponent(tfBrowserSend, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tfBrowserSend, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBrowserSend, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -196,7 +196,6 @@ public class sendPanel extends javax.swing.JPanel {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSendSend)
-                    .addComponent(btnResetSend)
                     .addComponent(ntnCancelSend))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
@@ -247,10 +246,14 @@ public class sendPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnSendSendActionPerformed
 
+    private void ntnCancelSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ntnCancelSendActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_ntnCancelSendActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBrowserSend;
-    private javax.swing.JButton btnResetSend;
     private javax.swing.JButton btnSendSend;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;

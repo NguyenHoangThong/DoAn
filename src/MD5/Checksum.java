@@ -5,9 +5,12 @@
  */
 package MD5;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -36,7 +39,18 @@ public class Checksum {
         for (int i = 0; i < mdbytes.length; i++) {
           sb.append(Integer.toString((mdbytes[i] & 0xff) + 0x100, 16).substring(1));
         }
+        
 
         return sb.toString();
     }
+    public void ghiFile(String path,String value) throws IOException{
+		File f=new File(path);
+		if(!f.exists()){
+			f.createNewFile();
+		}
+		FileOutputStream out=new FileOutputStream(f,true);
+		BufferedWriter br=new BufferedWriter(new OutputStreamWriter(out));
+		br.write(value);
+		br.close();
+	}
 }
