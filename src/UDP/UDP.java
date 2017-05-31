@@ -31,7 +31,7 @@ public class UDP {
         {
             //tao md5 hash
             String checksum =  cs.MD5(f);
-            cs.ghiFile(host+".txt", checksum+"\r\n");
+            cs.ghiFile(host+".txt", f.getName().toString()+": "+checksum+"\r\n");
             //------------------------------------------//
             //ma hoa file
             File encryptedFile = new File("document.encrypted");
